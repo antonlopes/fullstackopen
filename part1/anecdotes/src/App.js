@@ -13,10 +13,10 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
-  const [pontos, setPontos] = useState(Array(anecdotes.length).fill(0));
+  const [pontos, setPontos] = useState(Array(anecdotes.length).fill(0))
 
   const handleNextAnecdote = () => {
-    const index = Math.floor(Math.random() * anecdotes.length);
+    const index = Math.floor(Math.random() * anecdotes.length)
     setSelected(index);
   }
     
@@ -27,7 +27,7 @@ const App = () => {
   }       
 
   const maiorValor = Math.max(...pontos);
-  const indiceDOMaior = pontos.indexOf(maiorValor);
+  const indiceDoMaior = pontos.indexOf(maiorValor);
 
   return (
     <div>
@@ -35,20 +35,10 @@ const App = () => {
       <p>{anecdotes[selected]}</p>
       <p>has {pontos[selected]} votes</p>
       <button onClick={handleVote}>vote</button>
-      <button onClick={handleNextAnecdote}>next anecdotes</button>
-      
-      {maiorValor > 0 ? (
-        <>
-          <h2>Anecdote with most votes</h2>
-          <p>{anecdotes[indiceDOMaior]}</p>
-          <p>has {pontos[indiceDOMaior]} votes</p>
-        </>
-      ) : (
-        <p>No votes registered yet.</p>
-      )}
-      
-      
-      
+      <button onClick={handleNextAnecdote}>next anecdote</button>
+      <h2>Anecdote with most votes</h2>
+      <p>{anecdotes[indiceDoMaior]}</p>
+      <p>has {pontos[indiceDoMaior]} votes</p>
     </div>
   )
 }
