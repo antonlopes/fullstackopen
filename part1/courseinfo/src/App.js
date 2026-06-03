@@ -5,7 +5,6 @@ const Header = (props) => {
 }
 
 
-
 const Content = (props) => {
   console.log(props)
   return (
