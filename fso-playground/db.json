@@ -1,0 +1,40 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "content": "HTML é fácil",
+      "important": false
+    },
+    {
+      "id": "2",
+      "content": "O navegador só pode executar JavaScript",
+      "important": true
+    },
+    {
+      "id": "3",
+      "content": "GET e POST são os métodos mais importantes do protocolo HTTP",
+      "important": false
+    },
+    {
+      "content": "Text",
+      "important": false,
+      "id": "tAvqojtMrUA"
+    },
+    {
+      "content": "eX",
+      "important": true,
+      "id": "w1o5mtpimV4"
+    },
+    {
+      "content": "Teas",
+      "important": false,
+      "id": "vw2eyz3r6vU"
+    },
+    {
+      "content": "Antonio ",
+      "important": false,
+      "id": "SRMrSbUsYM8"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

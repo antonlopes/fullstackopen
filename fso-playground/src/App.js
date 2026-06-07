@@ -1,27 +1,43 @@
-import { useState } from 'react'
-
-const Exibir = props => <div>{props.valor}</div>
-
-const Botao = (props) => (
-  <button onClick={props.handleClique}>
-    {props.texto}
-  </button>
-)
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const App = () => {
-  const [valor, setValor] = useState(10)
+  const [value, setValue] = useState('')
+  const [rates, setRates] = useState({})
+  const [currency, setCurrency] = useState(null)
 
-  const setNoValor = novoValor => {
-    console.log('setValor atual', novoValor)
-    setValor(novoValor)
+  useEffect(() => {
+    console.log('effect run, currency is now', currency)
+
+    // skip if currency is not defined
+    if (currency) {
+      console.log('fetching exchange rates...')
+      axios
+        .get(`https://open.er-api.com/v6/latest/${currency}`)
+        .then(response => {
+          setRates(response.data.rates)
+        })
+    }
+  }, [currency])
+
+  const handleChange = (event) => {
+    setValue(event.target.value)
+  }
+
+  const onSearch = (event) => {
+    event.preventDefault()
+    setCurrency(value)
   }
 
   return (
     <div>
-      <Exibir valor={valor} />
-      <Botao handleClique={() => setNoValor(1000)} texto="mil" />
-      <Botao handleClique={() => setNoValor(0)} texto="zerar" />
-      <Botao handleClique={() => setNoValor(valor + 1)} texto="incrementar" />
+      <form onSubmit={onSearch}>
+        currency: <input value={value} onChange={handleChange} />
+        <button type="submit">exchange rate</button>
+      </form>
+      <pre>
+        {JSON.stringify(rates, null, 2)}
+      </pre>
     </div>
   )
 }
