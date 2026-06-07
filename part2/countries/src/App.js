@@ -112,7 +112,7 @@ const App = () => {
               <p>Área: {filteredCountries[0].area}</p>
               <h3>Languages</h3>
               <ul>
-                {filteredCountries[0].language &&
+                {filteredCountries[0].languages &&
                   Object.values(filteredCountries[0].languages).map(language => (
                     <li key={language}>
                       {language}

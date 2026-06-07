@@ -39,6 +39,11 @@ const App = () => {
   const addContact = (event) => {
     event.preventDefault()
 
+    if (newName.name.trim() === '' || newName.number.trim() === '') {
+      alert('Name and number are required')
+      return
+    }
+
     const existingPerson = persons.find(
       person => person.name.toLowerCase() === newName.name.trim().toLowerCase()
     )
@@ -54,7 +59,7 @@ const App = () => {
 
       const changedPerson = {
         ...existingPerson,
-        number: newName.number
+        number: newName.number.trim()
       }
 
       personService
@@ -95,8 +100,8 @@ const App = () => {
     }
 
     const personObject = {
-      name: newName.name,
-      number: newName.number
+      name: newName.name.trim(),
+      number: newName.number.trim()
     }
 
     personService
