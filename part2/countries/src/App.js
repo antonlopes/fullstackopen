@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-
 const apiOpenWeather = process.env.REACT_APP_OPENWEATHER_API
-
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -11,7 +9,6 @@ const App = () => {
   const [filteredCountries, setFilteredCountries] = useState([])
   const [weather, setWeather] = useState(null)
   
-
   const restcountriesURL = 'https://studies.cs.helsinki.fi/restcountries/api/all'
   
 
