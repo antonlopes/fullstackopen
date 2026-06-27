@@ -49,62 +49,56 @@ const App = () => {
     )
 
     if (existingPerson) {
-      alert(`${existingPerson.name} is already added to phonebook`)
+      const confirmUpdate = window.confirm(
+        `${existingPerson.name} is already added to phonebook, replace the old number with a new one?`
+      )
+
+      if (!confirmUpdate) {
+        return
+      }
+
+      const changedPerson = {
+        ...existingPerson,
+        number: newName.number.trim()
+      }
+
+      personService
+        .update(existingPerson.id, changedPerson)
+        .then(returnedPerson => {
+          setPersons(persons.map(person =>
+            person.id !== existingPerson.id ? person : returnedPerson
+          ))
+
+          setNotificationMessage({
+            message: `${returnedPerson.name} was changed on the list.`,
+            type: 'success'
+
+          })
+
+          setTimeout(() => {
+            setNotificationMessage(null)
+          }, 5000)
+
+          setNewName({
+            name: '',
+            number: ''
+          })
+        })
+        .catch(error => {
+          setNotificationMessage({
+            message: `${changedPerson.name} has already been removed from server.`,
+            type: 'error'
+          })
+
+          setPersons(persons.filter(person => person.id !== existingPerson.id))
+
+          setTimeout(() => {
+            setNotificationMessage(null) 
+          }, 5000)
+        })
       return
     }
 
-    // if (existingPerson) {
-    //   const confirmUpdate = window.confirm(
-    //     `${existingPerson.name} is already added to phonebook, replace the old number with a new one?`
-    //   )
-
-    //   if (!confirmUpdate) {
-    //     return
-    //   }
-
-    //   const changedPerson = {
-    //     ...existingPerson,
-    //     number: newName.number.trim()
-    //   }
-
-    //   personService
-    //     .update(existingPerson.id, changedPerson)
-    //     .then(returnedPerson => {
-    //       setPersons(persons.map(person =>
-    //         person.id !== existingPerson.id ? person : returnedPerson
-    //       ))
-
-    //       setNotificationMessage({
-    //         message: `${returnedPerson.name} was changed on the list.`,
-    //         type: 'success'
-
-    //       })
-
-    //       setTimeout(() => {
-    //         setNotificationMessage(null)
-    //       }, 5000)
-
-    //       setNewName({
-    //         name: '',
-    //         number: ''
-    //       })
-    //     })
-    //     .catch(error => {
-    //       setNotificationMessage({
-    //         message: `${changedPerson.name} has already been removed from server.`,
-    //         type: 'error'
-    //       })
-
-    //       setPersons(persons.filter(person => person.id !== existingPerson.id))
-
-    //       setTimeout(() => {
-    //         setNotificationMessage(null) 
-    //       }, 5000)
-    //     })
-    //   return
-    // }
-
-  // devo atualizar o catch error do update (personservice)?
 
 
     const personObject = {
