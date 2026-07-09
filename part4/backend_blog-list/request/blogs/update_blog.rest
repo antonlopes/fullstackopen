@@ -1,0 +1,11 @@
+PUT http://localhost:3001/api/blogs/6a45765e53e1cc8cab199f38
+Content-Type: application/json
+
+{
+  "title": "Hábitos Atômicos",
+  "author": "James Clear",
+  "url": "https://jamesclear.com/atomic-habits",
+  "likes": 120
+}
+
+
