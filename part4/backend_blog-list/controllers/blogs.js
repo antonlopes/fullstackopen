@@ -32,12 +32,7 @@ blogsRouter.post('/', middleware.userExtractor, async (request, response, next) 
     user.blogs = user.blogs.concat(savedBlog._id)
     await user.save()
 
-    const populatedBlog = await savedBlog.populate('user', {
-      username: 1,
-      name: 1
-    })
-
-    response.status(201).json(populatedBlog)
+    response.status(201).json(savedBlog)
   } catch (exception) {
     next(exception)
   }

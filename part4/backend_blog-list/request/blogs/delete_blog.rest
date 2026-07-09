@@ -1,1 +1,3 @@
+### Deletar blog
 DELETE http://localhost:3001/api/blogs/6a4960980b1636ddedff5948
+Authorization: Bearer 

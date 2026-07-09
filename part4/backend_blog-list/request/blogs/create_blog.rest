@@ -1,11 +1,8 @@
+### Criar blog
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
 Authorization: Bearer 
 
 {
-  "title": "Como organizar melhor sua rotina de trabalho",
-  "author": "Mariana Costa",
-  "url": "www.rotinadeestudos.com.br",
-  "likes": "87",
-  "userId": ""
+  "likes": 87
 }
