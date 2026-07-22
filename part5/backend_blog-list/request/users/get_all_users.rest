@@ -1,0 +1,2 @@
+### Buscar todos os usuários
+GET http://localhost:3001/api/users

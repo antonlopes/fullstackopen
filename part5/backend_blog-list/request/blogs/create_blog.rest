@@ -1,0 +1,8 @@
+### Criar blog
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer 
+
+{
+  "likes": 87
+}
